@@ -1,9 +1,29 @@
+const path = require('path');
 const express = require('express');
 const getWeather = require('./utils/weather');
 const getGeo = require('./utils/getLocation');
+const hbs = require('hbs');
 
 
 const app = express();
+
+const templatePath = path.join(__dirname,"../template");
+const partialPath = path.join(__dirname,"../template/partials");
+
+app.set('view engine','hbs');
+app.set('views',templatePath);
+hbs.registerPartials(partialPath);
+
+
+
+const publicDirPath = path.join(__dirname,"../public");
+console.log(publicDirPath);
+
+app.use(express.static(publicDirPath));
+
+app.get('/',(req,res)=>{
+    res.render('index');
+})
 
 app.get('/weather',(req,res)=>{
     if(!req.query.address){
@@ -24,6 +44,14 @@ app.get('/weather',(req,res)=>{
 
 })
 
+
+app.get('/help',(req,res)=>{
+    res.render('help');
+});
+
+app.get('/about',(req,res)=>{
+    res.render('about');
+});
 
 
 
