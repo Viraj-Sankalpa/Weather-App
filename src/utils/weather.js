@@ -13,9 +13,10 @@ const getWeather = (lat,lon)=>{
             axios.get(url)
             .then(function (response) {
 
-                resolve({weather:'Weather status :  '+response.data.weather[0].main +'  &  Wind Speed :  '+ response.data.wind.speed +'m/s'})
+                resolve({weather:'Weather status :  '+response.data.weather[0].main +'  &  Wind Speed :  '+ response.data.wind.speed +'m/s ==>> ' + response.data.sys.country})
+                // resolve({weather: 'This city is Located in ' + response.data.country})
                 // handle success
-                // console.log("Weather status : ",response.data.weather[0].main);
+                // console.log("Weather status : ",response.data.sys.country);
                 // console.log("Wind Speed : ",response.data.wind.speed,"m/s");
             })
             .catch(function (error) {
