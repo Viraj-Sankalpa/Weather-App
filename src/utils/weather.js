@@ -17,7 +17,7 @@ const getWeather = (lat,lon)=>{
                 // resolve({weather: 'This city is Located in ' + response.data.country})
                 // handle success
                 // console.log("Tepperature : ",response.data.main.temp);
-                console.log("Wind Speed : ",response.data.wind.speed,"m/s");
+                // console.log("Wind Speed : ",response.data.wind.speed,"m/s");
             })
             .catch(function (error) {
                 reject({error:error.response.data.message})
